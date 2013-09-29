@@ -21,4 +21,4 @@ project.xcworkspace
 project.xcworkspace/
 .project
 *.zip
-iOS/Classes/Credentials.h
+/iOS/Classes/Credentials.h
