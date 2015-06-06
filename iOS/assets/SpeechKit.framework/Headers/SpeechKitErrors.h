@@ -32,4 +32,5 @@ enum {
     SKRecognizerError = 3,
     SKVocalizerError = 4,
 	SKCancelledError = 5,
+    SKPermissionError = 8,
 };

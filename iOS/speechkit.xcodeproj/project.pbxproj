@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -59,7 +59,7 @@
 		4360495317F7F6DE00CD943B /* TiSpeechkitRecognizerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiSpeechkitRecognizerProxy.h; path = Classes/TiSpeechkitRecognizerProxy.h; sourceTree = "<group>"; };
 		4360495417F7F6DE00CD943B /* TiSpeechkitRecognizerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiSpeechkitRecognizerProxy.m; path = Classes/TiSpeechkitRecognizerProxy.m; sourceTree = "<group>"; };
 		4360495717F7F6EF00CD943B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4360495917F7F75400CD943B /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = SDK/SpeechKit.framework; sourceTree = "<group>"; };
+		4360495917F7F75400CD943B /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = SDK/SpeechKit.framework; sourceTree = SOURCE_ROOT; };
 		4360495B17F7F7D300CD943B /* Credentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Credentials.h; path = Classes/Credentials.h; sourceTree = "<group>"; };
 		4360495D17F7F7ED00CD943B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4360495F17F7F7F300CD943B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -76,12 +76,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4360495A17F7F75400CD943B /* SpeechKit.framework in Frameworks */,
 				4360496617F7F82200CD943B /* Security.framework in Frameworks */,
 				4360496417F7F81100CD943B /* CoreGraphics.framework in Frameworks */,
 				4360496217F7F7F800CD943B /* SystemConfiguration.framework in Frameworks */,
 				4360496017F7F7F300CD943B /* CFNetwork.framework in Frameworks */,
 				4360495E17F7F7ED00CD943B /* AudioToolbox.framework in Frameworks */,
-				4360495A17F7F75400CD943B /* SpeechKit.framework in Frameworks */,
 				4360495817F7F6EF00CD943B /* AVFoundation.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 			);
@@ -188,9 +188,10 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0630;
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "speechkit" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -258,6 +259,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/benjamin/Projects/Ti/Modules/Ti.SpeechKit/iOS/SDK,
+					"$(PROJECT_DIR)/SDK",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -299,6 +301,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/benjamin/Projects/Ti/Modules/Ti.SpeechKit/iOS/SDK,
+					"$(PROJECT_DIR)/SDK",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
@@ -331,6 +334,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					x86_64,
+					i386,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DSTROOT = /tmp/TiSpeechkit.dst;
@@ -350,6 +358,8 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DDEBUG",
 					"-DTI_POST_1_2",
@@ -361,6 +371,7 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
 		};
@@ -369,6 +380,11 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					x86_64,
+					i386,
+				);
 				DSTROOT = /tmp/TiSpeechkit.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
@@ -386,13 +402,14 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = TiSpeechkit;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64 i386";
 			};
 			name = Release;
 		};

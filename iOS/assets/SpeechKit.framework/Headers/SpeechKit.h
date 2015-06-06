@@ -65,6 +65,40 @@ extern const unsigned char SpeechKitApplicationKey[];
  implement the SpeechKitDelegate protocol and observe the destroyed method
  as described below.
  
+ @discussion This method starts the necessary underlying components of the
+ SpeechKit framework.  Ensure that the SpeechKitApplicationKey variable
+ contains your application key prior to calling this method.  On calling this
+ method, a connection is established with the speech server and authorization
+ details are exchanged.  This provides the necessary setup to perform
+ recognitions and vocalizations.  In addition, having the established connection
+ results in improved response times for speech requests made soon after as the
+ recorded audio can be sent without waiting for a connection.  Once the system
+ has been initialized with this function, future calls to setupWithID will be
+ ignored.  If you wish to connect to a different server or call this function
+ again for any reason, you must call [SpeechKit destroy] and wait for the
+ destroyed delegate method to be called.
+ */
++ (void)setupWithID:(NSString*)ID
+               host:(NSString*)host
+               port:(long)port
+             useSSL:(BOOL)useSSL
+           delegate:(id <SpeechKitDelegate>)delegate;
+
+/*!
+ @abstract This method configures the SpeechKit subsystems.
+ 
+ @param ID Application identification
+ @param host The Nuance speech server hostname or IP address
+ @param port The Nuance speech server port
+ @param useSSL Whether or not SpeechKit should use SSL to
+ communicate with the Nuance speech server
+ @param deviceId Device identification. If nil or empty, a default one will be
+ used.
+ @param delegate The receiver for the setup message responses.  If the user
+ wishes to destroy and re-connect to the SpeechKit servers, the delegate must
+ implement the SpeechKitDelegate protocol and observe the destroyed method
+ as described below.
+ 
  @discussion This method starts the necessary underlying components of the 
  SpeechKit framework.  Ensure that the SpeechKitApplicationKey variable 
  contains your application key prior to calling this method.  On calling this 
@@ -82,6 +116,46 @@ extern const unsigned char SpeechKitApplicationKey[];
                host:(NSString*)host 
                port:(long)port
              useSSL:(BOOL)useSSL
+           deviceId:(NSString*)deviceId
+           delegate:(id <SpeechKitDelegate>)delegate;
+
+/*!
+ @abstract This method configures the SpeechKit subsystems.
+ 
+ @param ID Application identification
+ @param host The Nuance speech server hostname or IP address
+ @param port The Nuance speech server port
+ @param useSSL Whether or not SpeechKit should use SSL to
+ communicate with the Nuance speech server
+ @param certSummary Certificate Summary could be nil, if non-nil, it should not be empty
+ @param certData Certificate Data could be nil, if non-nil, it should not be empty
+ @param deviceId Device identification. If nil or empty, a default one will be
+ used.
+ @param delegate The receiver for the setup message responses.  If the user
+ wishes to destroy and re-connect to the SpeechKit servers, the delegate must
+ implement the SpeechKitDelegate protocol and observe the destroyed method
+ as described below.
+ 
+ @discussion This method starts the necessary underlying components of the
+ SpeechKit framework.  Ensure that the SpeechKitApplicationKey variable
+ contains your application key prior to calling this method.  On calling this
+ method, a connection is established with the speech server and authorization
+ details are exchanged.  This provides the necessary setup to perform
+ recognitions and vocalizations.  In addition, having the established connection
+ results in improved response times for speech requests made soon after as the
+ recorded audio can be sent without waiting for a connection.  Once the system
+ has been initialized with this function, future calls to setupWithID will be
+ ignored.  If you wish to connect to a different server or call this function
+ again for any reason, you must call [SpeechKit destroy] and wait for the
+ destroyed delegate method to be called.
+ */
++ (void)setupWithID:(NSString*)ID
+               host:(NSString*)host
+               port:(long)port
+             useSSL:(BOOL)useSSL
+        certSummary:(NSString*)certSummary
+           certData:(NSString*)certData
+           deviceId:(NSString*)deviceId
            delegate:(id <SpeechKitDelegate>)delegate;
 
 /*!

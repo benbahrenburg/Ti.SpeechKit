@@ -1,6 +1,6 @@
 
 FRAMEWORK_SEARCH_PATHS=$(inherited) "$(SRCROOT)/../../modules/iphone/ti.speechkit/0.1/assets" "$(TI_SDK_DIR)/"
 
-OTHER_LDFLAGS=$(inherited) -ObjC -framework SpeechKit -framework Security -framework CFNetwork -framework CoreGraphics -framework AudioToolbox -framework SystemConfiguration -framework AVFoundation 
+OTHER_LDFLAGS=$(inherited) -ObjC -framework SpeechKit -framework Security -framework CFNetwork -framework CoreGraphics -framework AudioToolbox -framework SystemConfiguration -framework AVFoundation -lstdc++.6.0.9 
 
 
